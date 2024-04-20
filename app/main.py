@@ -79,7 +79,7 @@ class Battleship:
                                 line_field[deck.column] = "*"
                             else:
                                 line_field[deck.column] = "\u25A1"
-            print('  '.join(line_field))
+            print("  ".join(line_field))
 
     def _validate_ships_placement(self) -> None:
         temp_field = {}
@@ -100,12 +100,12 @@ class Battleship:
                     ValueError(
                         "Ships must be either horizontal or vertical."
                     )
-            for i in range(start[0], end[0] + 1):
-                for j in range(start[1], end[1] + 1):
-                    if (i, j) in temp_field:
+            for x_coord in range(start[0], end[0] + 1):
+                for y_coord in range(start[1], end[1] + 1):
+                    if (x_coord, y_coord) in temp_field:
                         raise\
                             ValueError(
                                 "Ships cannot intersect or touch each other."
                             )
-                    temp_field[(i, j)] = True
+                    temp_field[(x_coord, y_coord)] = True
         self.field = {ship: Ship(ship[0], ship[1]) for ship in self.ships}
