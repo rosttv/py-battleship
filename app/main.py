@@ -91,21 +91,18 @@ class Battleship:
                 and 0 <= end[0] <= 9
                 and 0 <= end[1] <= 9
             ):
-                raise (
-                    ValueError(
-                        "Ships must be within the bounds of the 10x10 grid."
-                    ))
+                raise ValueError(
+                    "Ships must be within the bounds of the 10x10 grid."
+                )
             if start[0] != end[0] and start[1] != end[1]:
-                raise\
-                    ValueError(
-                        "Ships must be either horizontal or vertical."
-                    )
+                raise ValueError(
+                    "Ships must be either horizontal or vertical."
+                )
             for x_coord in range(start[0], end[0] + 1):
                 for y_coord in range(start[1], end[1] + 1):
                     if (x_coord, y_coord) in temp_field:
-                        raise\
-                            ValueError(
-                                "Ships cannot intersect or touch each other."
-                            )
+                        raise ValueError(
+                            "Ships cannot intersect or touch each other."
+                        )
                     temp_field[(x_coord, y_coord)] = True
         self.field = {ship: Ship(ship[0], ship[1]) for ship in self.ships}
